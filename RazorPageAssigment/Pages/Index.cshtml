@@ -1,0 +1,40 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1 class="ml-3">Pizza Menu</h1>
+
+<form class="input-group col-md-6" method="get">
+    <input 
+        name="productName" 
+        type="search" 
+        class="form-control rounded" 
+        placeholder="Search" 
+        aria-label="Search" 
+        aria-describedby="search-addon" 
+        value="@ViewData["SearchString"]"
+        />
+    <button type="submit" class="btn btn-outline-primary ml-2">Search</button>
+</form>
+
+<div class="container mx-auto mt-4">
+
+    <div class="row">
+        @foreach (var pizza in @Model.listPizza)
+        {
+            var categoryPizza = @Model.categories.Find(category => category.CategoryId == pizza.CategoryId);
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="~/pizza/@pizza.ProductImage" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@pizza.ProductName</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Category: @categoryPizza.CategoryName</h6>
+                        <p class="card-text">@pizza.Description</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

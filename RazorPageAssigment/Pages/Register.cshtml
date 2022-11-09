@@ -1,0 +1,48 @@
+﻿@page
+@model RazorPageAssigment.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h3>Register</h3>
+<hr class="soft" />
+
+<form class="col-md-6" asp-page="register" method="post">
+    @if (!string.IsNullOrEmpty(@Model.Msg))
+    {
+        <div class="form-outline mb-4">
+            <span class="alert alert-danger" role="alert">
+                @Model.Msg
+            </span>
+        </div>
+    }
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form2Example1">Username</label>
+        <input type="text" id="form2Example1" name="username" class="form-control" />
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form2Example2">Password</label>
+        <input type="password" id="form2Example2" name="password" class="form-control" />
+    </div>
+
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form2Example2">Address</label>
+        <input type="text" id="form2Example2" name="address" class="form-control" />
+    </div>
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form2Example2">Phone</label>
+        <input type="text" id="form2Example2" name="phone" class="form-control" />
+    </div>
+    <!-- 2 column grid layout for inline styling -->
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+    <input type="hidden" asp-for="management" />
+
+    <!-- Register buttons -->
+    <div class="text-center">
+        <p>Already a member? <a asp-page="login">Login</a></p>
+    </div>
+</form>

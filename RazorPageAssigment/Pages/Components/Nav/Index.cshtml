@@ -1,0 +1,32 @@
+﻿<div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+    <ul class="navbar-nav flex-grow-1">
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+        </li>
+
+        @if (ViewBag.type == "True")
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-page="listproducts">Pizzas</a>
+            </li>
+        }
+        @if (ViewBag.username == null)
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-page="login">Login</a>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <span class="nav-link">Admin Page</span>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link">Welcome @ViewBag.username</span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-page="login" asp-page-handler="logout">Logout</a>
+            </li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,78 @@
+﻿@page
+@model RazorPageAssigment.Pages.EditProductModel
+@{
+    ViewData["Title"] = "Edit Pizza";
+}
+<div class="container-fluid">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-6">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Edit Pizza</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form asp-page="editproduct" method="post" enctype="multipart/form-data">
+
+                    <div class="card-body">
+                        @if (ViewData["error"] != null)
+                        {
+                            <div class="form-group">
+                                <span class="alert alert-danger" role="alert">
+                                    @ViewData["error"]
+                                </span>
+                            </div>
+                        }
+                        <div class="form-group">
+                            <label for="productid">Product Image</label>
+                            <input type="file" name="file" class="form-control" id="productid" asp-for="product.ProductImage">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username">Product Name</label>
+                            <input type="text" class="form-control" id="username" asp-for="product.ProductName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="supplier">Supplier Id</label>
+                            <input type="number" class="form-control" id="supplier"  asp-for="product.SupplierId" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Category Id</label>
+                            <input type="number" class="form-control" id="category" asp-for="product.CategoryId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantity Per Unit</label>
+                            <input type="number" class="form-control" id="quantity" asp-for="product.QuantityPerUnit" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="unitprice">Unit Price</label>
+                            <input type="number" class="form-control" id="unitprice" asp-for="product.UnitPrice" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" id="description" asp-for="product.Description"></textarea>
+                        </div>
+
+                    </div>
+
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        <input type="hidden" asp-for="product.ProductId" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <!--/.col (left) -->
+
+    </div>
+    <!-- /.row -->
+</div><!-- /.container-fluid -->

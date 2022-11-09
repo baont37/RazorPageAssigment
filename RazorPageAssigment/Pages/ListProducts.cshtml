@@ -1,0 +1,72 @@
+﻿@page
+@model RazorPageAssigment.Pages.ListProductsModel
+@{
+    ViewData["Title"] = "Pizza Management";
+}
+
+<h3> Pizza Management</h3>
+<a class="btn btn-success" asp-page="addproduct"><i class="fas fa-plus"></i>Create New</a>
+<hr class="soft" />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+
+                <div class="card-body">
+
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Product Id</th>
+                                <th>Product Image</th>
+                                <th>Product Name</th>
+                                <th>Supplier Id</th>
+                                <th>Category Id</th>
+                                <th>Quantity Per Unit</th>
+                                <th>Unit Price</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var pizza in @Model.listPizzas)
+                            {
+                                <tr>
+                                    <td>@pizza.ProductId</td>
+                                    <td><img src="~/pizza/@pizza.ProductImage" width="70" /></td>
+                                    <td>@pizza.ProductName</td>
+                                    <td>@pizza.SupplierId</td>
+                                    <td>@pizza.CategoryId</td>
+                                    <td>@pizza.QuantityPerUnit</td>
+                                    <td>$@pizza.UnitPrice</td>
+                                    <td>@pizza.Description</td>
+                                    <td>
+                                        <a asp-page="product" asp-route-id="@pizza.ProductId" class="text-success">
+                                            Detail
+                                            </a>
+                                            |
+                                        <a asp-page="editproduct" asp-route-id="@pizza.ProductId" class="text-primary">
+                                            Edit
+                                        </a>
+                                            |
+                                        <a asp-page="listproducts" asp-route-id="@pizza.ProductId" asp-page-handler="delete"class="text-danger">
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>

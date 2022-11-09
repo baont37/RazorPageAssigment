@@ -1,0 +1,27 @@
+﻿@page
+@model RazorPageAssigment.Pages.ProductModel
+@{
+    ViewData["Title"] = "Pizza Detail";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="wrapper row">
+                <div class="preview col-md-6">
+                    <div class="preview-pic tab-content">
+                        <div class="tab-pane active">
+                            <img src="~/pizza/@Model.product.ProductImage" width="400" height="252" />
+                        </div>
+                    </div>
+                </div>
+                <div class="details col-md-6">
+                    <h2 class="product-title">@Model.product.ProductName</h2>
+                    <p class="product-description">@Model.product.Description</p>
+                    <h4>Current price: <span>$@Model.product.UnitPrice</span></h4>
+                    <h4>Current quantity: <span>@Model.product.QuantityPerUnit</span></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
